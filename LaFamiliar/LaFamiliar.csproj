@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CEEE76CD-14C1-40E4-9D62-51EC4056C614}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>La_Familiar</RootNamespace>
+    <AssemblyName>La Familiar</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon_.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClasesEntidad\Ahorro.cs" />
+    <Compile Include="ClasesEntidad\AhorroDetalle.cs" />
+    <Compile Include="ClasesEntidad\AhorroPlazo.cs" />
+    <Compile Include="ClasesEntidad\AhorroProgramado.cs" />
+    <Compile Include="ClasesEntidad\AportacionDetalle.cs" />
+    <Compile Include="ClasesEntidad\Asociado.cs" />
+    <Compile Include="ClasesEntidad\AsociadoConyuge.cs" />
+    <Compile Include="ClasesEntidad\AsociadoDependencia.cs" />
+    <Compile Include="ClasesEntidad\AsociadoInfoPersonal.cs" />
+    <Compile Include="ClasesEntidad\AsociadoNacimiento.cs" />
+    <Compile Include="ClasesEntidad\AsociadoTrabajo.cs" />
+    <Compile Include="ClasesEntidad\Credito.cs" />
+    <Compile Include="ClasesEntidad\CreditoDescuento.cs" />
+    <Compile Include="ClasesEntidad\CreditoDetalle.cs" />
+    <Compile Include="ClasesEntidad\Dui.cs" />
+    <Compile Include="ClasesEntidad\GarantiaFiador.cs" />
+    <Compile Include="ClasesEntidad\GarantiaHipotecaria.cs" />
+    <Compile Include="ClasesEntidad\GarantiaPrendaria.cs" />
+    <Compile Include="ClasesEntidad\LugarTrabajo.cs" />
+    <Compile Include="ClasesServicio\AhorroServicio.cs" />
+    <Compile Include="ClasesServicio\AportacionServicio.cs" />
+    <Compile Include="ClasesServicio\AsociadoServicio.cs" />
+    <Compile Include="ClasesEntidad\Beneficiario.cs" />
+    <Compile Include="ClasesServicio\CreditoServicio.cs" />
+    <Compile Include="ClasesServicio\GarantiasServicios.cs" />
+    <Compile Include="ClasesServicio\LugarTrabajoServicio.cs" />
+    <Compile Include="Clases\ComboBoxItem.cs" />
+    <Compile Include="Clases\Correlativo.cs" />
+    <Compile Include="Clases\FechasCapitalizables.cs" />
+    <Compile Include="Clases\Numalet.cs" />
+    <Compile Include="Clases\Queries.cs" />
+    <Compile Include="Clases\Reportes.cs" />
+    <Compile Include="Clases\TiposAhorro.cs" />
+    <Compile Include="Clases\TiposCredito.cs" />
+    <Compile Include="Clases\TiposFormasDePago.cs" />
+    <Compile Include="DataSets\DS_PagosCreditosDiarios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_PagosCreditosDiarios.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormEspera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormEspera.designer.cs">
+      <DependentUpon>FormEspera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormDatePicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormDatePicker.Designer.cs">
+      <DependentUpon>FormDatePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Validar.cs" />
+    <Compile Include="DataSets\DSEstado.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSEstado.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\DS_Proyeccion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Proyeccion.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormAhorro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormAhorro.designer.cs">
+      <DependentUpon>FormAhorro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormAhorroBeneficiario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormAhorroBeneficiario.Designer.cs">
+      <DependentUpon>FormAhorroBeneficiario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormAportacionNueva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormAportacionNueva.Designer.cs">
+      <DependentUpon>FormAportacionNueva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormAsociado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormAsociado.designer.cs">
+      <DependentUpon>FormAsociado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormAsociadoBeneficiarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormAsociadoBeneficiarios.Designer.cs">
+      <DependentUpon>FormAsociadoBeneficiarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormAsociadoOtros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormAsociadoOtros.Designer.cs">
+      <DependentUpon>FormAsociadoOtros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormAsociadoTrabajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormAsociadoTrabajo.Designer.cs">
+      <DependentUpon>FormAsociadoTrabajo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormCredito.Designer.cs">
+      <DependentUpon>FormCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\Provider.cs" />
+    <Compile Include="Formularios\FormAhorroMovimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormAhorroMovimiento.Designer.cs">
+      <DependentUpon>FormAhorroMovimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormAhorroNuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormAhorroNuevo.Designer.cs">
+      <DependentUpon>FormAhorroNuevo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormAsociadoNuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormAsociadoNuevo.Designer.cs">
+      <DependentUpon>FormAsociadoNuevo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormCreditoAgregarGarantias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormCreditoAgregarGarantias.Designer.cs">
+      <DependentUpon>FormCreditoAgregarGarantias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormCreditoGarantia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormCreditoGarantia.Designer.cs">
+      <DependentUpon>FormCreditoGarantia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormCreditoNuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormCreditoNuevo.Designer.cs">
+      <DependentUpon>FormCreditoNuevo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\Style.cs" />
+    <Compile Include="Formularios\FormCreditoPagarCuota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormCreditoPagarCuota.Designer.cs">
+      <DependentUpon>FormCreditoPagarCuota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormEspera.resx">
+      <DependentUpon>FormEspera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormAhorro.resx">
+      <DependentUpon>FormAhorro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormAhorroBeneficiario.resx">
+      <DependentUpon>FormAhorroBeneficiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormAportacionNueva.resx">
+      <DependentUpon>FormAportacionNueva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormAsociado.resx">
+      <DependentUpon>FormAsociado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormAsociadoBeneficiarios.resx">
+      <DependentUpon>FormAsociadoBeneficiarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormAsociadoOtros.resx">
+      <DependentUpon>FormAsociadoOtros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormAsociadoTrabajo.resx">
+      <DependentUpon>FormAsociadoTrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormCredito.resx">
+      <DependentUpon>FormCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormAhorroMovimiento.resx">
+      <DependentUpon>FormAhorroMovimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormAhorroNuevo.resx">
+      <DependentUpon>FormAhorroNuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormAsociadoNuevo.resx">
+      <DependentUpon>FormAsociadoNuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormCreditoAgregarGarantias.resx">
+      <DependentUpon>FormCreditoAgregarGarantias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormCreditoGarantia.resx">
+      <DependentUpon>FormCreditoGarantia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormCreditoNuevo.resx">
+      <DependentUpon>FormCreditoNuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormCreditoPagarCuota.resx">
+      <DependentUpon>FormCreditoPagarCuota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormDatePicker.resx">
+      <DependentUpon>FormDatePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="DataSets\DSEstado.xsc">
+      <DependentUpon>DSEstado.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DSEstado.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSEstado.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\DSEstado.xss">
+      <DependentUpon>DSEstado.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DS_PagosCreditosDiarios.xsc">
+      <DependentUpon>DS_PagosCreditosDiarios.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DS_PagosCreditosDiarios.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_PagosCreditosDiarios.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\DS_PagosCreditosDiarios.xss">
+      <DependentUpon>DS_PagosCreditosDiarios.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DS_Proyeccion.xsc">
+      <DependentUpon>DS_Proyeccion.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\DS_Proyeccion.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Proyeccion.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\DS_Proyeccion.xss">
+      <DependentUpon>DS_Proyeccion.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon_.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
