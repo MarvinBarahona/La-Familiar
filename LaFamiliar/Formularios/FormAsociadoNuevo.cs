@@ -25,7 +25,7 @@ namespace La_Familiar.Formularios
         {
             InitializeComponent();
 
-            txtNum.KeyPress += new KeyPressEventHandler(Validar.soloNumeros);
+            txtNum.KeyPress += new KeyPressEventHandler(Validar.idAsociado);
             txtNombre.KeyPress += new KeyPressEventHandler(Validar.soloLetrasyEspacios);
             txtApellido.KeyPress += new KeyPressEventHandler(Validar.soloLetrasyEspacios);
             txtDui.KeyPress += new KeyPressEventHandler(Validar.dui);
@@ -37,8 +37,8 @@ namespace La_Familiar.Formularios
         private void NuevoAsociado_Load(object sender, EventArgs e)
         {
             dtpIngreso.Value = DateTime.Today;
-            asociado.id = TiposCorrelativo.Asociado.getCorrelativo();   
-            txtNum.Text = asociado.ToString();
+            //asociado.id = TiposCorrelativo.Asociado.getCorrelativo();   
+            //txtNum.Text = asociado.ToString();
         }
 
 // ###################################################################################################
@@ -79,14 +79,21 @@ namespace La_Familiar.Formularios
 
                 asociado.fechaIngreso = dtpIngreso.Value;
 
-                Queries.transactionBegin();
+                
                 try
                 {
-                    asociado.insert();
-                    TiposCorrelativo.Asociado.update();
-
-                    Queries.transactionCommit();
-                    this.Close();
+                    if(asociado.exist(asociado.id))
+                    {
+                        Queries.transactionBegin();
+                        asociado.insert();
+                        //TiposCorrelativo.Asociado.update();
+                        Queries.transactionCommit();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Este código de asociado ya ha sido asignado");
+                    }
                 }
                 catch(Exception ex)
                 {

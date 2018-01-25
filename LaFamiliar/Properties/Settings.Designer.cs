@@ -25,20 +25,21 @@ namespace La_Familiar.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=USUARIO-PC;Initial Catalog=\"La Familiar\";Integrated Security=True")]
-        public string La_FamiliarConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("001")]
+        public string Sucursal {
             get {
-                return ((string)(this["La_FamiliarConnectionString"]));
+                return ((string)(this["Sucursal"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("001")]
-        public string Sucursal {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-GPEQPRB;Initial Catalog=\"La Familiar\";Integrated Security=Tru" +
+            "e")]
+        public string La_FamiliarConnectionString {
             get {
-                return ((string)(this["Sucursal"]));
+                return ((string)(this["La_FamiliarConnectionString"]));
             }
         }
     }

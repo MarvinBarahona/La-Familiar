@@ -258,7 +258,6 @@
             // 
             // txtNum
             // 
-            this.txtNum.Enabled = false;
             this.txtNum.Location = new System.Drawing.Point(138, 35);
             this.txtNum.Name = "txtNum";
             this.txtNum.Size = new System.Drawing.Size(56, 22);

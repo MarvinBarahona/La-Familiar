@@ -185,6 +185,41 @@ namespace La_Familiar.ClasesEntidad
             }
         }
 
+        public bool exist(int id)
+        {
+            string query;
+            int ida = 0;
+            List<SqlParameter> parameters;
+            bool flag = true;
+            try
+            {
+                Queries.transactionBegin();
+                query = "select id from asociados.asociado where id = @ida";
+                parameters = new List<SqlParameter>()
+                {
+                    new SqlParameter("ida", id)
+                };
+
+                SqlDataReader dataReader = Queries.getDataReader(query, parameters);
+
+                while (dataReader.Read())
+                {
+                    ida = dataReader.GetInt32(0);
+                }
+                dataReader.Close();
+
+                if (ida != 0)
+                {
+                    flag = false;
+                }
+                Queries.transactionCommit();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error en la consula SQL", ex);
+            }
+            return flag;
+        }
 
         //update
         public void update()

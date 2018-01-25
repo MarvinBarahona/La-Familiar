@@ -103,6 +103,26 @@ namespace La_Familiar.Clases
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b') e.Handled = true;
         }
 
+        public static void idAsociado(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+            TextBox tb = sender as TextBox;
+            int cant = tb.Text.Length;
+
+            if (char.IsNumber(e.KeyChar) && cant < 6)
+            {
+                cant++;
+                tb.Text += e.KeyChar;
+            }
+            if (e.KeyChar == '\b' && cant != 0)
+            {
+                cant--;
+                tb.Text = tb.Text.Remove(cant);
+            }
+
+            tb.SelectionStart = cant;
+        }
+
         public static void btnEliminarDataGrid(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
