@@ -35,8 +35,7 @@ namespace La_Familiar.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-GPEQPRB;Initial Catalog=\"La Familiar\";Integrated Security=Tru" +
-            "e")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=USUARIO-PC;Initial Catalog=\"La Familiar\";Integrated Security=True")]
         public string La_FamiliarConnectionString {
             get {
                 return ((string)(this["La_FamiliarConnectionString"]));
