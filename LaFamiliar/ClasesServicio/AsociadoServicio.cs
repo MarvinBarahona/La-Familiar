@@ -86,8 +86,17 @@ namespace La_Familiar.ClasesServicio
             tblAsociado.Columns["DUI"].Width = ancho * 14 / 100;
             tblAsociado.Columns["Nombres"].Width = ancho * 25 / 100;
             tblAsociado.Columns["Apellidos"].Width = ancho * 25 / 100;
-            tblAsociado.Columns["Aportación"].Width = ancho * 13 / 100;
-            tblAsociado.Columns["Fecha Ingreso"].Width = ancho * 13 / 100;
+            tblAsociado.Columns["Aportación"].Width = ancho * 10 / 100;
+            tblAsociado.Columns["Fecha Ingreso"].Width = ancho * 10 / 100;
+
+            var deleteButton = new DataGridViewButtonColumn();
+            deleteButton.Name = "btnEliminar";
+            deleteButton.HeaderText = "";
+            deleteButton.Text = "x";
+            deleteButton.UseColumnTextForButtonValue = true;
+            tblAsociado.Columns.Add(deleteButton);
+
+            tblAsociado.Columns["btnEliminar"].Width = ancho * 6 / 100;
 
             tblAsociado.DoubleBuffered(true);
         }
@@ -303,6 +312,81 @@ namespace La_Familiar.ClasesServicio
             dataReader.Close();
 
             return asociado;
+        }
+
+        public static bool eliminar(int idAsociado)
+        {
+            bool resultado; 
+            string query;
+            List<SqlParameter> parameters;
+
+            try
+            {
+                query = "delete from asociados.conyuge where id_asociado = @id";
+                parameters = new List<SqlParameter>()
+                {
+                    new SqlParameter("id", idAsociado)
+                };
+                Queries.execute(query, parameters);
+
+                query = "delete from asociados.beneficiario where id_asociado = @id";
+                parameters = new List<SqlParameter>()
+                {
+                    new SqlParameter("id", idAsociado)
+                };
+                Queries.execute(query, parameters);
+
+                query = "delete from asociados.dependencia where id_asociado = @id";
+                parameters = new List<SqlParameter>()
+                {
+                    new SqlParameter("id", idAsociado)
+                };
+                Queries.execute(query, parameters);
+
+                query = "delete from asociados.trabajo where id_asociado = @id";
+                parameters = new List<SqlParameter>()
+                {
+                    new SqlParameter("id", idAsociado)
+                };
+                Queries.execute(query, parameters);
+
+                query = "delete from asociados.asociadodetalle where id_asociado = @id";
+                parameters = new List<SqlParameter>()
+                {
+                    new SqlParameter("id", idAsociado)
+                };
+                Queries.execute(query, parameters);
+
+                query = "delete from asociados.ahorro where id_asociado = @id";
+                parameters = new List<SqlParameter>()
+                {
+                    new SqlParameter("id", idAsociado)
+                };
+                Queries.execute(query, parameters);
+
+                query = "delete from asociados.credito where id_asociado = @id";
+                parameters = new List<SqlParameter>()
+                {
+                    new SqlParameter("id", idAsociado)
+                };
+                Queries.execute(query, parameters);
+
+                query = "delete from asociados.asociado where id = @id";
+                parameters = new List<SqlParameter>()
+                {
+                    new SqlParameter("id", idAsociado)
+                };
+                Queries.execute(query, parameters);
+
+                resultado = true;
+            }
+
+            catch (SqlException ex)
+            {
+                resultado = false;
+            }
+
+            return resultado;
         }
     }
 }

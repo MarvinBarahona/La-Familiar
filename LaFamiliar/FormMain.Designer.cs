@@ -155,6 +155,7 @@
             this.tblAsociados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tblAsociados.Size = new System.Drawing.Size(685, 390);
             this.tblAsociados.TabIndex = 0;
+            this.tblAsociados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tblAsociados_CellContentClick);
             this.tblAsociados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tblAsociados_CellDoubleClick);
             this.tblAsociados.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.tblAsociados_ColumnHeaderMouseClick);
             // 

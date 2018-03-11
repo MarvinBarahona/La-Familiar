@@ -123,5 +123,36 @@ namespace La_Familiar
         {
             
         }
+
+        // ##########################################################################
+        // ##########       Eventos para eliminar registros      ####################
+        // ##########################################################################
+
+        private void tblAhorros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+                
+        }
+
+        private void tblCreditos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void tblAsociados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                if (e.ColumnIndex == tblAsociados.Columns["btnEliminar"].Index)
+                {
+                    DialogResult dialogResult = MessageBox.Show("¿Elimiar asociado?", "Confirmación", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        int id = (int)tblAsociados.Rows[e.RowIndex].Cells["id"].Value;
+                        if(AsociadoServicio.eliminar(id))
+                            tblAsociados.Rows.RemoveAt(e.RowIndex);
+                    }
+                }
+            }
+        }
     }
 }
