@@ -82,41 +82,47 @@ namespace La_Familiar.Formularios
             switch (credito.tipo) { 
                 case ("Consumo"):
                     credito.codigo = TiposCorrelativo.CreditoConsumo.generarCodigo();
-                    credito.id = TiposCorrelativo.CreditoConsumo.getCorrelativo();
+                    lblCodigo.Text = credito.codigo;
+                    credito.codigo = TiposCorrelativo.CreditoConsumo.getCorrelativo().ToString();
                     montoLimite(true);
                 break;
                 case ("Comercio"):
                     credito.codigo = TiposCorrelativo.CreditoComercio.generarCodigo();
-                    credito.id = TiposCorrelativo.CreditoComercio.getCorrelativo();
+                    lblCodigo.Text = credito.codigo;
+                    credito.codigo = TiposCorrelativo.CreditoComercio.getCorrelativo().ToString();
                     montoLimite(true);
                 break;
                 case ("Servicio"):
                     credito.codigo = TiposCorrelativo.CreditoServicio.generarCodigo();
-                    credito.id = TiposCorrelativo.CreditoServicio.getCorrelativo();
+                    lblCodigo.Text = credito.codigo;
+                    credito.codigo = TiposCorrelativo.CreditoServicio.getCorrelativo().ToString();
                     montoLimite(true);
                 break;
                 case ("Vivienda"):
                     credito.codigo = TiposCorrelativo.CreditoVivienda.generarCodigo();
-                    credito.id = TiposCorrelativo.CreditoVivienda.getCorrelativo();
+                    lblCodigo.Text = credito.codigo;
+                    credito.codigo = TiposCorrelativo.CreditoVivienda.getCorrelativo().ToString();
                     montoLimite(true);
                 break;
                 case ("Sobre deposito a plazo"):
                     credito.codigo = TiposCorrelativo.CreditoDeposito.generarCodigo();
-                    credito.id = TiposCorrelativo.CreditoDeposito.getCorrelativo();
+                    lblCodigo.Text = credito.codigo;
+                    credito.codigo = TiposCorrelativo.CreditoDeposito.getCorrelativo().ToString();
                     montoLimite(true);
                 break;
                 case ("Liquidez o rotativo"):
                     credito.codigo = TiposCorrelativo.CreditoRotativo.generarCodigo();
-                    credito.id = TiposCorrelativo.CreditoRotativo.getCorrelativo();
+                    lblCodigo.Text = credito.codigo;
+                    credito.codigo = TiposCorrelativo.CreditoRotativo.getCorrelativo().ToString();
                     montoLimite(true);
                 break;
                 case("Sobre aportación"):
                     credito.codigo = TiposCorrelativo.CreditoAportacion.generarCodigo();
-                    credito.id = TiposCorrelativo.CreditoAportacion.getCorrelativo();
+                    lblCodigo.Text = credito.codigo;
+                    credito.codigo = TiposCorrelativo.CreditoAportacion.getCorrelativo().ToString();
                     montoLimite(false);
                     break;
             }
-            lblCodigo.Text = credito.codigo;
         }
 
         //Selección de la tasa. 
@@ -238,22 +244,25 @@ namespace La_Familiar.Formularios
                         case ("Liquidez o rotativo"):
                             TiposCorrelativo.CreditoRotativo.update();
                             break;
+                        default:
+                            MessageBox.Show("1");
+                            break;
                     }
 
                     // #### Creación de reportes del crédito ####
                     credito.asociado = AsociadoServicio.selectParcial(credito.idAsociado);
                     
-                    Reportes.cartaAprobacion(credito.asociado, credito);
-                    Reportes.hojaLiquidacion(credito.asociado, credito);
-                    Reportes.mutuo(credito.asociado, credito);
-                    if (credito.forma_pago == "Orden de descuento")
-                        Reportes.ordenDescuento(credito.asociado, credito);
-                    Reportes.proyeccionPagos(credito.asociado, credito);
+                    //Reportes.cartaAprobacion(credito.asociado, credito);
+                    //Reportes.hojaLiquidacion(credito.asociado, credito);
+                    //Reportes.mutuo(credito.asociado, credito);
+                    //if (credito.forma_pago == "Orden de descuento")
+                    //    Reportes.ordenDescuento(credito.asociado, credito);
+                    //Reportes.proyeccionPagos(credito.asociado, credito);
 
                     Queries.transactionCommit();
 
                     formEspera.Close();
-                    Reportes.abrirCarpeta();
+                    //Reportes.abrirCarpeta();
                     this.Close();
                 }
                 catch (Exception ex)

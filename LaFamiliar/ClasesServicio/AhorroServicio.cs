@@ -28,10 +28,28 @@ namespace La_Familiar.ClasesServicio
             query += " order by aho.fecha desc";
 
             DataTable dataTable = Queries.getDataTable(query);
+           
+            foreach(DataRow r in dataTable.Rows)
+            {
+                int codigo = Int32.Parse(r["Código"].ToString());
+                switch(r["Tipo"].ToString())
+                {
+                    case ("Corriente"):
+                        r["Código"] = TiposCorrelativo.AhorroCorriente.generarCodigo(codigo);
+                        break;
+                    case ("Depósito a plazo"):
+                        r["Código"] = TiposCorrelativo.AhorroPlazo.generarCodigo(codigo);
+                        break;
+                    case ("Programado"):
+                        r["Código"] = TiposCorrelativo.AhorroProgramado.generarCodigo(codigo);
+                        break;
+                }
+            }
+
             tblAhorro.DataSource = dataTable;
 
             tblAhorro.Columns["id"].Visible = false;
-
+            
             int ancho = tblAhorro.Width;
 
             if (idAsociado == -1)

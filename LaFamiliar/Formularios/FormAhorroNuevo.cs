@@ -152,6 +152,8 @@ namespace La_Familiar.Formularios
                     nudTasa.Value = 2;
 
                     ahorro.codigo = TiposCorrelativo.AhorroCorriente.generarCodigo();
+                    lblCodigo.Text = "Código:   " + ahorro.codigo;
+                    ahorro.codigo = TiposCorrelativo.AhorroCorriente.getCorrelativo().ToString();
                     break;
                 case "Depósito a plazo":
                     nudPlazo.Enabled = true;
@@ -171,6 +173,8 @@ namespace La_Familiar.Formularios
                     lblPago.Text = "Cuena de ahorro: ";
 
                     ahorro.codigo = TiposCorrelativo.AhorroPlazo.generarCodigo();
+                    lblCodigo.Text = "Código:   " + ahorro.codigo;
+                    ahorro.codigo = TiposCorrelativo.AhorroPlazo.getCorrelativo().ToString();
                     break;
                 case "Programado":
                     nudPlazo.Enabled = true;
@@ -192,10 +196,12 @@ namespace La_Familiar.Formularios
                     cmbFormaPago.Items.Add("Orden de descuento");
 
                     ahorro.codigo = TiposCorrelativo.AhorroProgramado.generarCodigo();
+                    lblCodigo.Text = "Código:   " + ahorro.codigo;
+                    ahorro.codigo = TiposCorrelativo.AhorroProgramado.getCorrelativo().ToString();
                     break;
             }
 
-            lblCodigo.Text = "Código:   " + ahorro.codigo;
+            
         }
 
         private void btnBeneficiarios_Click(object sender, EventArgs e)

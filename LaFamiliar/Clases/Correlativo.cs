@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Windows.Forms;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +22,6 @@ namespace La_Familiar.Clases
         CreditoRotativo = 56, 
         CreditoAportacion = 57
     }
-
 
     static class Correlativo
     {
@@ -47,6 +47,13 @@ namespace La_Familiar.Clases
             return codigo;
         }
 
+        public static string generarCodigo(this TiposCorrelativo tipo, int correlativo)
+        {
+            string codigo = La_Familiar.Properties.Settings.Default.Sucursal + "-" + tipo.getCorrelativoString()
+                + "-" + Provider.numToFilledZeroString(correlativo, 6);
+            return codigo;
+        }
+
         public static int getCorrelativo(this TiposCorrelativo tipo)
         {
             string query = "select correlativo from dbo.correlativo where nombre = @tipo";
@@ -58,12 +65,12 @@ namespace La_Familiar.Clases
             SqlDataReader dataReader = Queries.getDataReader(query, parameters);
 
             int correlativo = 0;
-            while (dataReader.Read())
+            while(dataReader.Read())
             {
                 correlativo = dataReader.GetInt32(0);
             }
             dataReader.Close();
-
+            
             return correlativo;
         }
 

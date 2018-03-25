@@ -22,7 +22,7 @@ namespace La_Familiar.ClasesServicio
         public static void fillTable(DataGridView tblCredito, int idAsociado = -1)
         {
             String query = "select cre.id, cre.codigo as 'Código', concat(aso.nombres, ' ', aso.apellidos) as Asociado, " +
-                "cre.monto as Monto, cre.forma_pago as 'Forma Pago', cre.fecha as Fecha " +
+                "cre.monto as Monto, cre.forma_pago as 'Forma Pago', cre.tipo as Tipo ,cre.fecha as Fecha " +
                 "from asociados.asociado aso inner join asociados.credito cre on aso.id = cre.id_asociado";
 
             if (idAsociado != -1)
@@ -33,6 +33,36 @@ namespace La_Familiar.ClasesServicio
             query += " order by cre.fecha desc";
 
             DataTable dataTable = Queries.getDataTable(query);
+            
+            foreach(DataRow r in dataTable.Rows)
+            {
+                int codigo = Int32.Parse(r["Código"].ToString());
+                switch (r["Tipo"].ToString())
+                {
+                    case ("Consumo"):
+                        r["Código"] = TiposCorrelativo.CreditoConsumo.generarCodigo(codigo);
+                        break;
+                    case ("Comercio"):
+                        r["Código"] = TiposCorrelativo.CreditoComercio.generarCodigo(codigo);
+                        break;
+                    case ("Servicio"):
+                        r["Código"] = TiposCorrelativo.CreditoServicio.generarCodigo(codigo);
+                        break;
+                    case ("Vivienda"):
+                        r["Código"] = TiposCorrelativo.CreditoVivienda.generarCodigo(codigo);
+                        break;
+                    case ("Sobre deposito a plazo"):
+                        r["Código"] = TiposCorrelativo.CreditoDeposito.generarCodigo(codigo);
+                        break;
+                    case ("Liquidez o rotativo"):
+                        r["Código"] = TiposCorrelativo.CreditoRotativo.generarCodigo(codigo);
+                        break;
+                    case ("Sobre aportación"):
+                        r["Código"] = TiposCorrelativo.CreditoAportacion.generarCodigo(codigo);
+                        break;
+                }
+            }
+            
             tblCredito.DataSource = dataTable;
 
             tblCredito.Columns["id"].Visible = false;
